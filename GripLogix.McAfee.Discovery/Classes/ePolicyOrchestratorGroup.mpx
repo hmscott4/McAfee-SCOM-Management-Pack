@@ -1,13 +1,10 @@
-﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TypeDefinitions>
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID="GripLogix.McAfee.ePolicyOrchestratorGroup" Base="System!System.Group" Accessibility="Public" Abstract="false" Hosted="false" Singleton="true">
-        </ClassType>
+        <ClassType ID="GripLogix.McAfee.ePolicyOrchestratorGroup" Accessibility="Public" Abstract="false" Base="System!System.Group" Hosted="false" Singleton="true" Extension="false" />
       </ClassTypes>
     </EntityTypes>
-  </TypeDefinitions>
-  <LanguagePacks>
+  </TypeDefinitions><LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="GripLogix.McAfee.ePolicyOrchestratorGroup">
@@ -16,5 +13,4 @@
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>
-  </LanguagePacks>
-</ManagementPackFragment>
+  </LanguagePacks></ManagementPackFragment>

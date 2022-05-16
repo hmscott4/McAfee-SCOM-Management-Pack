@@ -19,7 +19,7 @@
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.LastPolicyUpdateTime.McAfeeEndPointSecurity</Id>
         <DisplayName>McAfee Last Policy Update Time Monitor</DisplayName>
         <Description>Monitors last Policy Update Date/Time.</Description>
@@ -60,7 +60,7 @@ Please check health explorer too get more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.DatInstallDate.McAfeeMcShield</Id>
         <DisplayName>McAfee Dat Install Date Expiration</DisplayName>
         <Description>Monitors the Dat Install Date Expiration.</Description>
@@ -101,7 +101,7 @@ Please check health explorer too get more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.LastASCTime.McAfeeEndPointSecurity</Id>
         <DisplayName>McAfee Last Agent To Server Communication Monitor</DisplayName>
         <Description>Monitors last Agent to Server Communication Date/Time.</Description>
@@ -142,7 +142,7 @@ Please check health explorer too get more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.AMCoreContentDate.McAfeeThreadPrevention</Id>
         <DisplayName>McAfee AM Core Content Date</DisplayName>
         <Description>Monitors AM Core Content Date.</Description>
@@ -183,7 +183,7 @@ Please check health explorer too get more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeEpolicyOrchestrator</Id>
         <DisplayName>McAfee ePolicyOrchestrator Windows Service Monitor</DisplayName>
         <Description>McAfee ePolicyOrchestrator Windows Service Monitor.</Description>
@@ -204,7 +204,7 @@ Check Health Explorer for more details.</AlertDescription>
       </UnitMonitorConfig>
     </Instance>
     <Instance ID="Instance22da4d732ae14aa69b234d5281d1aa5a" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.UnitMonitor" Version="1.0.0.0">
-      <UnitMonitorConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <UnitMonitorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <MonitorType>Windows!Microsoft.Windows.CheckNTServiceStateMonitorType</MonitorType>
         <MonitorConfig>&lt;ComputerName&gt;$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$&lt;/ComputerName&gt;&lt;ServiceName&gt;$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMcShield"]/ServiceName$&lt;/ServiceName&gt;&lt;CheckStartupType&gt;true&lt;/CheckStartupType&gt;</MonitorConfig>
         <MonitorOperationalStates>
@@ -222,7 +222,7 @@ Check Health Explorer for more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeMcShield</Id>
         <DisplayName>McAfee McShield Windows Service Monitor</DisplayName>
         <Description>McAfee McShield Windows Service Monitor.</Description>
@@ -261,7 +261,7 @@ Check Health Explorer for more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeAgentHandler</Id>
         <DisplayName>McAfee Agent Handler Windows Service Monitor</DisplayName>
         <Description>McAfee Agent Handler Windows Service Monitor.</Description>
@@ -300,7 +300,7 @@ Check Health Explorer for more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeMoveAgentless</Id>
         <DisplayName>McAfee Move Agentless Windows Service Monitor</DisplayName>
         <Description>McAfee Move Agentless Windows Service Monitor.</Description>
@@ -339,7 +339,7 @@ Check Health Explorer for more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeEndPointSecurity</Id>
         <DisplayName>McAfee Agent Windows Service Monitor</DisplayName>
         <Description>McAfee Agent Windows Service Monitor.</Description>
@@ -378,7 +378,7 @@ Check Health Explorer for more details.</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.URL.ePolicyOrchestrator</Id>
         <DisplayName>McAfee ePolicyOrchestrator URL Monitor</DisplayName>
         <Description>McAfee ePolicyOrchestrator URL Monitor.</Description>
@@ -416,7 +416,7 @@ Debug info: $Data/Context/Property[@Name='Debug']$</AlertDescription>
           </OperationalState>
         </MonitorOperationalStates>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.WindowsService.McAfeeAgent</Id>
         <DisplayName>McAfee Agent Windows Service Monitor</DisplayName>
         <Description>McAfee Agent Windows Service Monitor.</Description>

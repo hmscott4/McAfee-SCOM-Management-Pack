@@ -1,13 +1,12 @@
-﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TypeDefinitions>
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><TypeDefinitions>
     <ModuleTypes>
-      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" Accessibility="Internal">
+      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" Accessibility="Internal" Batching="false">
         <Configuration>
-          <xsd:element minOccurs="1" name="IntervalSeconds" type="xsd:integer" />
-          <xsd:element minOccurs="0" name="SyncTime" type="xsd:string" />
-          <xsd:element minOccurs="1" name="ComputerName" type="xsd:string" />
-          <xsd:element minOccurs="1" name="RegValuePath" type="xsd:string" />
-          <xsd:element minOccurs="1" name="DesiredRegValue" type="xsd:integer" />
+          <xsd:element minOccurs="1" name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="0" name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="ComputerName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="RegValuePath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
+          <xsd:element minOccurs="1" name="DesiredRegValue" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
         </Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
@@ -15,7 +14,7 @@
           <OverrideableParameter ID="RegValuePath" Selector="$Config/RegValuePath$" ParameterType="string" />
           <OverrideableParameter ID="DesiredRegValue" Selector="$Config/DesiredRegValue$" ParameterType="int" />
         </OverrideableParameters>
-        <ModuleImplementation>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
               <DataSource ID="Scheduler" TypeID="System!System.SimpleScheduler">
@@ -48,17 +47,15 @@
               </ConditionDetection>
             </MemberModules>
             <Composition>
-              <Node ID ="CD">
-                <Node ID ="RegProbe">
-                  <Node ID ="Scheduler" />
+              <Node ID="CD">
+                <Node ID="RegProbe">
+                  <Node ID="Scheduler" />
                 </Node>
               </Node>
             </Composition>
-          </Composite>          
+          </Composite>
         </ModuleImplementation>
         <OutputType>Windows!Microsoft.Windows.RegistryData</OutputType>
       </DataSourceModuleType>
     </ModuleTypes>
-  </TypeDefinitions> 
-  
-</ManagementPackFragment>
+  </TypeDefinitions></ManagementPackFragment>

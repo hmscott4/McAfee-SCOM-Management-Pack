@@ -1,19 +1,17 @@
-﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TypeDefinitions>
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><TypeDefinitions>
     <EntityTypes>
       <ClassTypes>
-        <ClassType ID="GripLogix.McAfee.McAfeeAgentHandler" Base="Windows!Microsoft.Windows.ComputerRole" Accessibility="Public" Abstract="false" Hosted="true" Singleton="false">
-          <Property ID="Name" Key="false" Type="string" />          
-          <Property ID="InstalledPath" Key="false" Type="string" />
-          <Property ID="EPOServer" Key="false" Type="string" />
-          <Property ID="Version" Key="false" Type="string" />
-          <Property ID="Database" Key="false" Type="string" />
-          <Property ID="DatabaseServer" Key="false" Type="string" />
+        <ClassType ID="GripLogix.McAfee.McAfeeAgentHandler" Accessibility="Public" Abstract="false" Base="Windows!Microsoft.Windows.ComputerRole" Hosted="true" Singleton="false" Extension="false">
+          <Property ID="Name" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="InstalledPath" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="EPOServer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Version" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="Database" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
+          <Property ID="DatabaseServer" Type="string" AutoIncrement="false" Key="false" CaseSensitive="false" MaxLength="256" MinLength="0" Required="false" Scale="0" />
         </ClassType>
       </ClassTypes>
     </EntityTypes>
-  </TypeDefinitions>
-  <LanguagePacks>
+  </TypeDefinitions><LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="GripLogix.McAfee.McAfeeAgentHandler">
@@ -23,7 +21,7 @@
         <DisplayString ElementID="GripLogix.McAfee.McAfeeAgentHandler" SubElementID="Name">
           <Name>Name</Name>
           <Description></Description>
-        </DisplayString>        
+        </DisplayString>
         <DisplayString ElementID="GripLogix.McAfee.McAfeeAgentHandler" SubElementID="InstalledPath">
           <Name>Installed Path</Name>
           <Description></Description>
@@ -46,5 +44,4 @@
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>
-  </LanguagePacks>
-</ManagementPackFragment>
+  </LanguagePacks></ManagementPackFragment>

@@ -206,7 +206,7 @@
         <ModuleImplementation>
           <Composite>
             <MemberModules>
-              <DataSource ID="Scheduler" TypeID="System!System.Scheduler">
+              <DataSource ID="Scheduler" TypeID="System!System.Discovery.Scheduler">
                 <Scheduler>
                   <SimpleReccuringSchedule>
                     <Interval Unit="Seconds">$Config/IntervalSeconds$</Interval>
@@ -246,7 +246,7 @@
         <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Scheduler" TypeID="System!System.Scheduler">
+              <DataSource ID="Scheduler" TypeID="System!System.Discovery.Scheduler">
                 <Scheduler>
                   <SimpleReccuringSchedule>
                     <Interval Unit="Seconds">$Config/IntervalSeconds$</Interval>
@@ -291,7 +291,7 @@
         <ModuleImplementation>
           <Composite>
             <MemberModules>
-              <DataSource ID="Scheduler" TypeID="System!System.Scheduler">
+              <DataSource ID="Scheduler" TypeID="System!System.Discovery.Scheduler">
                 <Scheduler>
                   <SimpleReccuringSchedule>
                     <Interval Unit="Seconds">$Config/IntervalSeconds$</Interval>
@@ -331,7 +331,7 @@
         <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Scheduler" TypeID="System!System.Scheduler">
+              <DataSource ID="Scheduler" TypeID="System!System.Discovery.Scheduler">
                 <Scheduler>
                   <SimpleReccuringSchedule>
                     <Interval Unit="Seconds">$Config/IntervalSeconds$</Interval>
@@ -1005,7 +1005,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.EPOServer" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.EPOServer" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeAgentHandler">
@@ -1109,7 +1109,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.RegBased" Target="GripLogix.McAfee.McAfeeMcShield" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.RegBased" Target="GripLogix.McAfee.McAfeeMcShield" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeMcShield">
@@ -1153,7 +1153,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.RegBased" Target="GripLogix.McAfee.McAfeeEndPointSecurity" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.RegBased" Target="GripLogix.McAfee.McAfeeEndPointSecurity" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeEndPointSecurity">
@@ -1197,7 +1197,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.WindowsServices" Target="GripLogix.McAfee.McAfeeMcShield" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.WindowsServices" Target="GripLogix.McAfee.McAfeeMcShield" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.WindowsService.McAfeeMcShield" />
@@ -1229,7 +1229,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.Version" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.Version" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeAgentHandler">
@@ -1263,7 +1263,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeAgentHandler" />
@@ -1311,7 +1311,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator.Version" Target="GripLogix.McAfee.ePolicyOrchestrator" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator.Version" Target="GripLogix.McAfee.ePolicyOrchestrator" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.ePolicyOrchestrator">
@@ -1360,7 +1360,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           <ComputerName>$Target/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.ePolicyOrchestrator" />
@@ -1408,7 +1408,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator.WindowsServices" Target="GripLogix.McAfee.ePolicyOrchestrator" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.ePolicyOrchestrator.WindowsServices" Target="GripLogix.McAfee.ePolicyOrchestrator" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.WindowsService.McAfeeEpolicyOrchestrator" />
@@ -1440,7 +1440,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.WindowsServices" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgentHandler.WindowsServices" Target="GripLogix.McAfee.McAfeeAgentHandler" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.WindowsService.McAfeeAgentHandler" />
@@ -1500,7 +1500,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.WindowsServices" Target="GripLogix.McAfee.McAfeeEndPointSecurity" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.WindowsServices" Target="GripLogix.McAfee.McAfeeEndPointSecurity" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.WindowsService.McAfeeEndPointSecurity" />
@@ -1532,7 +1532,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeThreadPrevention.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeThreadPrevention.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeThreadPrevention" />
@@ -1544,7 +1544,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_AM_*</RegKeyPath>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgent.WindowsServices" Target="GripLogix.McAfee.McAfeeAgent" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgent.WindowsServices" Target="GripLogix.McAfee.McAfeeAgent" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.WindowsService.McAfeeAgent" />
@@ -1576,7 +1576,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </InstanceSettings>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgent" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeAgent" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeAgent">
@@ -1654,7 +1654,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           </Expression>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeEndPointSecurity.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeEndPointSecurity" />
@@ -1666,7 +1666,7 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
           <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_GS_*</RegKeyPath>
         </DataSource>
       </Discovery>
-      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal">
+      <Discovery ID="GripLogix.McAfee.Discovery.Discovery.McAfeeMcShield.PSBased" Target="Windows!Microsoft.Windows.Computer" Enabled="true" ConfirmDelivery="false" Remotable="false" Priority="Normal">
         <Category>Discovery</Category>
         <DiscoveryTypes>
           <DiscoveryClass TypeID="GripLogix.McAfee.McAfeeMcShield" />

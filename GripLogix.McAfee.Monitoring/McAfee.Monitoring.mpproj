@@ -71,6 +71,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LanguagePacks_.mpx">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ManagementPack.mpx">
       <SubType>Code</SubType>
     </Compile>

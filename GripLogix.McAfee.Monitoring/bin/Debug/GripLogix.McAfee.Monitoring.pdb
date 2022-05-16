@@ -1,12 +1,12 @@
-Module Types\DataSourceType.Condition.PSRegCheckRegValue.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*5*8*DataSourceModuleType
-Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag*5*8*DataSourceModuleType
-Module Types\DataSourceType.RegCheckRegValue.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*4*8*DataSourceModuleType
-Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag*5*8*DataSourceModuleType
-Module Types\DataSourceType.Condition.PSRegCheckRegValue.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue*60*8*ProbeActionModuleType
-Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp*42*8*ProbeActionModuleType
-Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.Probe.WEBPageCheck*44*8*ProbeActionModuleType
-Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*92*8*UnitMonitorType
-Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*99*8*UnitMonitorType
+Module Types\DataSourceType.Condition.PSRegCheckRegValue.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*4*8*DataSourceModuleType
+Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag*4*8*DataSourceModuleType
+Module Types\DataSourceType.RegCheckRegValue.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*3*8*DataSourceModuleType
+Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag*4*8*DataSourceModuleType
+Module Types\DataSourceType.Condition.PSRegCheckRegValue.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue*59*8*ProbeActionModuleType
+Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp*39*8*ProbeActionModuleType
+Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.Probe.WEBPageCheck*41*8*ProbeActionModuleType
+Module Types\MonitorType.PSRegCheckRegValue.TimeStamp.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*180*8*UnitMonitorType
+Module Types\MonitorType.PSCheckWebPage.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*221*8*UnitMonitorType
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMcShield*6*8*Rule
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove*43*8*Rule
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity*77*8*Rule
@@ -68,6 +68,36 @@ Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity.AlertMessage*275*8*StringResource
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeThreadPrevention.AlertMessage*276*8*StringResource
 Monitors\Rules.mptg.mpx*GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeAgent.AlertMessage*277*8*StringResource
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*5*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*9*10*DisplayString*SubElementID*IntervalSeconds
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*13*10*DisplayString*SubElementID*SyncTime
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*17*10*DisplayString*SubElementID*RegKeyPath
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*21*10*DisplayString*SubElementID*RegValue
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*25*10*DisplayString*SubElementID*Threshold
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag*29*10*DisplayString*SubElementID*Debug
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag*33*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*37*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*41*10*DisplayString*SubElementID*IntervalSeconds
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*45*10*DisplayString*SubElementID*SyncTime
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*49*10*DisplayString*SubElementID*RegValuePath
+LanguagePacks_.mpx*GripLogix.McAfee.DataSource.RegCheckRegistryValue*53*10*DisplayString*SubElementID*DesiredRegValue
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag*57*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue*61*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp*65*10*DisplayString
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.Probe.WEBPageCheck*69*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*73*10*DisplayString
+LanguagePacks_.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*77*10*DisplayString*SubElementID*IntervalSeconds
+LanguagePacks_.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*81*10*DisplayString*SubElementID*SyncTime
+LanguagePacks_.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*85*10*DisplayString*SubElementID*Debug
+LanguagePacks_.mpx*GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp*89*10*DisplayString*SubElementID*Threshold
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*93*10*DisplayString
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*97*10*DisplayString*SubElementID*IntervalSeconds
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*101*10*DisplayString*SubElementID*SyncTime
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*105*10*DisplayString*SubElementID*Debug
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*109*10*DisplayString*SubElementID*Url
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*113*10*DisplayString*SubElementID*ContentChecked
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*117*10*DisplayString*SubElementID*ComputerName
+LanguagePacks_.mpx*GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status*121*10*DisplayString*SubElementID*TCPPort
 ManagementPack.mpx*GripLogix.McAfee.Monitoring*5*10*DisplayString
 Monitors\DisplayStrings.mpx*GripLogix.McAfee.Monitoring.Rule.PatchLevel.EndPointSecurity.AlertMessage*12*10*DisplayString
 Monitors\DisplayStrings.mpx*GripLogix.McAfee.Monitoring.Rule.PatchLevel.ThreadPrevention.AlertMessage*21*10*DisplayString

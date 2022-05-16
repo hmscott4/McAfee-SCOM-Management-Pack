@@ -1,15 +1,13 @@
-﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <TypeDefinitions>
+﻿<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><TypeDefinitions>
     <EntityTypes>
       <RelationshipTypes>
-        <RelationshipType ID="GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" Base="System!System.Hosting" Abstract="false" Accessibility="Public">
-          <Source ID="Source" Type="GripLogix.McAfee.ePolicyOrchestrator"/>
-          <Target ID="Target" Type="GripLogix.McAfee.URL.ePolicyOrchestrator"/>
+        <RelationshipType ID="GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" Accessibility="Public" Abstract="false" Base="System!System.Hosting">
+          <Source ID="Source" MinCardinality="0" MaxCardinality="2147483647" Type="GripLogix.McAfee.ePolicyOrchestrator" />
+          <Target ID="Target" MinCardinality="0" MaxCardinality="2147483647" Type="GripLogix.McAfee.URL.ePolicyOrchestrator" />
         </RelationshipType>
       </RelationshipTypes>
     </EntityTypes>
-  </TypeDefinitions>
-  <LanguagePacks>
+  </TypeDefinitions><LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
         <DisplayString ElementID="GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator">
@@ -18,6 +16,5 @@
         </DisplayString>
       </DisplayStrings>
     </LanguagePack>
-  </LanguagePacks>
-</ManagementPackFragment>
+  </LanguagePacks></ManagementPackFragment>
 

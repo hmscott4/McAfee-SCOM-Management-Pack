@@ -1,7 +1,7 @@
 <TemplateGroup>
   <Instances>
     <Instance ID="Instance3d5876a2e98b4569931758d52012d10f" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.ePolicyOrchestrator.DatabaseServer</Id>
         <DisplayName>Discovery ePolicyOrchestrator Database Server</DisplayName>
         <Description>Discovers ePolicyOrchestrator Database Server.</Description>
@@ -29,7 +29,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance9f271864f17a4d34b11866021856f872" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeMoveAgentless</Id>
         <DisplayName>Discovery McAfeeMoveAgentless</DisplayName>
         <Description>Discovers McAfeeMoveAgentless nodes.</Description>
@@ -52,7 +52,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instancec16bd52ab8444cec97aedabdf9347b39" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgentHandler.EPOServer</Id>
         <DisplayName>Discovery McAfeeAgentHandler EPO Server</DisplayName>
         <Description>Discovers McAfeeAgentHandler EPO Server.</Description>
@@ -61,7 +61,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeAgentHandler</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -80,7 +80,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance41aba19f693f424ebe9b3672ac5ec449" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
         <Id>Discovery.URL.ePolicyOrchestrator</Id>
         <DisplayName>Discovery URL Check ePolicy Orchestrator</DisplayName>
         <Description>Discovers URL Check ePolicy Orchestrator</Description>
@@ -112,7 +112,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeMcShield</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -131,7 +131,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance838230f1c969411991b93395f419775e" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeEndPointSecurity.RegBased</Id>
         <DisplayName>Discovery McAfee EndPoint Security (registry based)</DisplayName>
         <Description>Discovers McAfee EndPoint Security and related properties.</Description>
@@ -140,7 +140,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeEndPointSecurity</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -168,7 +168,7 @@
         <DataSourceType>Windows!Microsoft.Windows.WmiProviderWithClassSnapshotDataMapper</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeMcShield</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -182,7 +182,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance7511185562434762952b65ee012edccd" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgentHandler.Version</Id>
         <DisplayName>Discovery McAfeeAgentHandler Version</DisplayName>
         <Description>Discovers McAfeeAgentHandler Version.</Description>
@@ -191,7 +191,7 @@
         <DataSourceType>GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeAgentHandler</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -210,7 +210,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance47d610c2a37b447d80dc73bddf4bc89b" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgentHandler.DatabaseServer</Id>
         <DisplayName>Discovery McAfeeAgentHandler Database Server</DisplayName>
         <Description>Discovers McAfeeAgentHandler Database Server.</Description>
@@ -238,7 +238,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance984739046b79496d8d5025865aa5fcb4" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgentHandler</Id>
         <DisplayName>Discovery McAfee Agent Handler</DisplayName>
         <Description>Discovers McAfee Agent Handlers.</Description>
@@ -247,7 +247,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -261,7 +261,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instancecf67f131840d43b78f935f1a848f2dc6" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.ePolicyOrchestrator.Version</Id>
         <DisplayName>Discovery ePolicyOrchestrator Version</DisplayName>
         <Description>Discovers ePolicyOrchestrator Version.</Description>
@@ -270,7 +270,7 @@
         <DataSourceType>GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery</DataSourceType>
         <Target>GripLogix.McAfee.ePolicyOrchestrator</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -289,7 +289,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance25bcd67d95d54101b8de7a7b47d566b3" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.ePolicyOrchestrator.Database</Id>
         <DisplayName>Discovery ePolicyOrchestrator Database</DisplayName>
         <Description>Discovers ePolicyOrchestrator Database.</Description>
@@ -317,7 +317,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance34c5bef16e084ea8affb126b22f9a844" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgentHandler.Database</Id>
         <DisplayName>Discovery McAfeeAgentHandler Database</DisplayName>
         <Description>Discovers McAfeeAgentHandler Database.</Description>
@@ -340,7 +340,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instanced91cdff80c7e446cae54abdc2fca34cd" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.ePolicyOrchestrator</Id>
         <DisplayName>Discovery ePolicyOrchestrator</DisplayName>
         <Description>Discovers ePolicyOrchestrator and InstalledPath.</Description>
@@ -349,7 +349,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -372,7 +372,7 @@
         <DataSourceType>Windows!Microsoft.Windows.WmiProviderWithClassSnapshotDataMapper</DataSourceType>
         <Target>GripLogix.McAfee.ePolicyOrchestrator</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -395,7 +395,7 @@
         <DataSourceType>Windows!Microsoft.Windows.WmiProviderWithClassSnapshotDataMapper</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeAgentHandler</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -409,7 +409,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instancea6fb8b87ba6d497197329d513f0baa96" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeMoveAgentless.WindowsServices</Id>
         <DisplayName>Discovery McAfee Move Agentless Windows Services</DisplayName>
         <Description>Discovers McAfee Move Agentless Windows Services</Description>
@@ -441,7 +441,7 @@
         <DataSourceType>Windows!Microsoft.Windows.WmiProviderWithClassSnapshotDataMapper</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeEndPointSecurity</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -455,7 +455,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance916dc54ba07e4e4abedf153e472b1206" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeThreadPrevention.PSBased</Id>
         <DisplayName>Discovery McAfee Thread Prevention (powershell based)</DisplayName>
         <Description>Discovers McAfee Thread Prevention</Description>
@@ -464,7 +464,7 @@
         <DataSourceType>GripLogix.McAfee.DataSource.Discovery.McAfeePSRegistryBasedDiscovery</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -478,7 +478,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instanceeb9226199a524938989c9c7a3daa655d" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgent.WindowsServices</Id>
         <DisplayName>Discovery McAfeeAgent Windows Services</DisplayName>
         <Description>Discovers McAfeeAgent Windows Services</Description>
@@ -487,7 +487,7 @@
         <DataSourceType>Windows!Microsoft.Windows.WmiProviderWithClassSnapshotDataMapper</DataSourceType>
         <Target>GripLogix.McAfee.McAfeeAgent</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -501,7 +501,7 @@
       </DiscoveryConfig>
     </Instance>
     <Instance ID="Instance9de3104419914d25a6baa00679d0f2bf" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.Discovery" Version="1.0.0.0">
-      <DiscoveryConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DiscoveryConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Id>Discovery.McAfeeAgent</Id>
         <DisplayName>Discovery McAfeeAgent</DisplayName>
         <Description>Discovers McAfeeAgent</Description>
@@ -510,7 +510,7 @@
         <DataSourceType>Windows!Microsoft.Windows.FilteredRegistryDiscoveryProvider</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -538,7 +538,7 @@
         <DataSourceType>GripLogix.McAfee.DataSource.Discovery.McAfeePSRegistryBasedDiscovery</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>
@@ -561,7 +561,7 @@
         <DataSourceType>GripLogix.McAfee.DataSource.Discovery.McAfeePSRegistryBasedDiscovery</DataSourceType>
         <Target>Windows!Microsoft.Windows.Computer</Target>
         <Enabled>true</Enabled>
-        <Remotable>true</Remotable>
+        <Remotable>false</Remotable>
         <Priority>Normal</Priority>
         <ConfirmDelivery>false</ConfirmDelivery>
         <Category>Discovery</Category>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPackFragment SchemaVersion="2.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><LanguagePacks>
+    <LanguagePack ID="ENU" IsDefault="true">
+      <DisplayStrings>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery">
+          <Name>ePolicy Orch Property Discovery</Name>
+          <Description>GripLogix McAfee Data Source ePolicy Orch Property Discovery</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="InstallPath">
+          <Name>Install Path</Name>
+          <Description>Install Path</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="SearchFileInstallPath">
+          <Name>Search File Install Path</Name>
+          <Description>Search File Install Path</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="SearchPattern">
+          <Name>Search Pattern</Name>
+          <Description>Search Pattern</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="StripPattern">
+          <Name>Strip Pattern</Name>
+          <Description>Strip Pattern</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="TimeoutSeconds">
+          <Name>Timeout Seconds</Name>
+          <Description>Timeout Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.ePolicyOrchPropertyDiscovery" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Discovery.McAfeeAgentContainsInstanceRelation">
+          <Name>McAfee Agent Contains Instance Relation</Name>
+          <Description>GripLogix McAfee DataSource Discovery McAfee Agent Contains Instance Relation</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Discovery.McAfeeAgentContainsInstanceRelation" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery">
+          <Name>McAfee Agent Handler Property Discovery</Name>
+          <Description>GripLogix McAfee DataSource  McAfee Agent Handler Property Discovery</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="InstallPath">
+          <Name>Install Path</Name>
+          <Description>Install Path</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="SearchFileInstallPath">
+          <Name>Search File Install Path</Name>
+          <Description>Search File Install Path</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="SearchPattern">
+          <Name>Search Pattern</Name>
+          <Description>Search Pattern</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="StripPattern">
+          <Name>Strip Pattern</Name>
+          <Description>Strip Pattern</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="TimeoutSeconds">
+          <Name>Timeout Seconds</Name>
+          <Description>Timeout Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.McAfeeAgentHandlerPropertyDiscovery" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Discovery.McAfeePSRegistryBasedDiscovery">
+          <Name>Discovery McAfee PS Registry Based Discovery</Name>
+          <Description>GripLogix McAfee DataSource Discovery McAfee PS Registry Based Discovery</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Discovery.McAfeePSRegistryBasedDiscovery" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.ePolicyOrchPropertyDiscovery">
+          <Name>ePolicy Orch Property Discovery</Name>
+          <Description>GripLogix McAfee Probe ePolicy Orch Property Discovery</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.Discovery.McAfeeAgentContainsInstanceRelation">
+          <Name>McAfee Agent Contains Instance Relation</Name>
+          <Description>GripLogix McAfee Probe Discovery McAfee Agent Contains Instance Relation</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.McAfeeAgentHandlerPropertyDiscovery">
+          <Name>McAfee Agent Handler Property Discovery</Name>
+          <Description>Grip Logix McAfee Probe McAfee Agent Handler Property Discovery</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.Discovery.McAfeePSRegistryBasedDiscovery">
+          <Name>McAfee PS Registry Based Discovery</Name>
+          <Description>GripLogix McAfee Probe Discovery McAfee PS Registry Based Discovery</Description>
+        </DisplayString>
+      </DisplayStrings>
+    </LanguagePack>
+  </LanguagePacks></ManagementPackFragment>

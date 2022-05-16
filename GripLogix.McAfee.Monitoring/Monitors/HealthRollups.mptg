@@ -10,7 +10,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeMoveAgentlessHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee Move Agentless</DisplayName>
         <Description>Availability Health Rollup for McAfee Move Agentless.</Description>
@@ -35,7 +35,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeEndPointSecurity</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeAgentHostsMcAfeeEndPointSecurity</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfeeAgent Contains McAfee EndPoint Protection</DisplayName>
         <Description>Configuration Health Rollup for McAfeeAgent Contains McAfee EndPoint Protection.</Description>
@@ -60,7 +60,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfee Move AgentlessGroup</DisplayName>
         <Description>Configuration Health Rollup for McAfee Move Agentless Group.</Description>
@@ -85,7 +85,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsePolicyOrchestratorGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsePolicyOrchestratorGroup</Id>
         <DisplayName>Monitor Availability HealthRollup McAfeeService</DisplayName>
         <Description>Availability Health Rollup for McAfee Service.</Description>
@@ -110,7 +110,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentHandlerGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeServiceContainsMcAfeeAgentHandlerGroup</Id>
         <DisplayName>Monitor Availability HealthRollup McAfeeService</DisplayName>
         <Description>Availability Health Rollup for McAfee Service.</Description>
@@ -135,7 +135,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeAgentContainsMcAfeeMcShield</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee Agent Hosts McAfee McShield</DisplayName>
         <Description>Availability Health Rollup for McAfee Agent Hosts McAfee McShield.</Description>
@@ -160,7 +160,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler</Id>
         <DisplayName>Monitor Availability HealthRollup AgentHandlerGroup</DisplayName>
         <Description>Availability Health Rollup for AgentHandler Group.</Description>
@@ -185,7 +185,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfeeService</DisplayName>
         <Description>Configuration Health Rollup for McAfee Service.</Description>
@@ -210,7 +210,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup</Id>
         <DisplayName>Monitor Availability HealthRollup McAfeeService</DisplayName>
         <Description>Availability Health Rollup for McAfee Service.</Description>
@@ -235,7 +235,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee Move Agentless Group</DisplayName>
         <Description>Availability Health Rollup for McAfee Move Agentless Group.</Description>
@@ -260,7 +260,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfeeService</DisplayName>
         <Description>Configuration Health Rollup for McAfee Service.</Description>
@@ -285,7 +285,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup</Id>
         <DisplayName>Monitor Availability HealthRollup McAfeeService</DisplayName>
         <Description>Availability Health Rollup for McAfee Service.</Description>
@@ -310,7 +310,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent</Id>
         <DisplayName>Monitor Availability HealthRollup McAfeeAgentGroup</DisplayName>
         <Description>Availability Health Rollup for McAfeeAgent Group.</Description>
@@ -335,7 +335,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfeeAgentGroup</DisplayName>
         <Description>Configuration Health Rollup for McAfeeAgent Group.</Description>
@@ -360,7 +360,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeAgentContainsMcAfeeMcShield</Id>
         <DisplayName>Monitor Configuration HealthRollup McAfee Agent Hosts McAfee McShield</DisplayName>
         <Description>Configuration Health Rollup for McAfeeAgent Hosts McAfee McShield.</Description>
@@ -385,7 +385,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsThreadProtection</RelationshipType>
         <ParentMonitor>Health!System.Health.ConfigurationState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Configuration.HealthRollup.McAfeeEndPointSecurityHostsThreadProtection</Id>
         <DisplayName>Monitor McAfee EndPointSecurity Hosts ThreadProtection</DisplayName>
         <Description>Configuration Health Rollup for McAfee EndPointSecurity Hosts ThreadProtection</Description>
@@ -410,7 +410,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorGroupContainsePolicyOrchestrator</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.ePolicyOrchestratorGroupContainsePolicyOrchestrator</Id>
         <DisplayName>Monitor Availability HealthRollup ePolicyOrchestratorGroup</DisplayName>
         <Description>Availability Health Rollup for ePolicy Orchestrator Group.</Description>
@@ -426,7 +426,7 @@
       </DependencyMonitorConfig>
     </Instance>
     <Instance ID="Instancefe8089dbb16d426abbe5279e0bc898db" Type="Microsoft.SystemCenter.Authoring.CodeGeneration.Monitoring.DependencyMonitor" Version="1.0.0.0">
-      <DependencyMonitorConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <DependencyMonitorConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
         <Algorithm>
           <Algorithm>WorstOf</Algorithm>
         </Algorithm>
@@ -435,7 +435,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator</Id>
         <DisplayName>Monitor Availability HealthRollup ePolicyOrchestrator</DisplayName>
         <Description>Availability Health Rollup for ePolicy Orchestrator.</Description>
@@ -460,7 +460,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeAgentHandlerHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup Agent Handler</DisplayName>
         <Description>Availability Health Rollup for Agent Handler.</Description>
@@ -485,7 +485,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeEndPointSecurityHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee EndPoint Security</DisplayName>
         <Description>Availability Health Rollup for McAfee EndPoint Security.</Description>
@@ -510,7 +510,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeMcShieldHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeMcShieldHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee McShield</DisplayName>
         <Description>Availability Health Rollup for McAfee McShield.</Description>
@@ -535,7 +535,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup ePolicyOrchestrator</DisplayName>
         <Description>Availability Health Rollup for ePolicy Orchestrator.</Description>
@@ -560,7 +560,7 @@
         <MemberUnavailable>Ignore</MemberUnavailable>
         <RelationshipType>GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHostsMcAfeeWindowsService</RelationshipType>
         <ParentMonitor>Health!System.Health.AvailabilityState</ParentMonitor>
-        <Accessibility>Internal</Accessibility>
+        <Accessibility>Public</Accessibility>
         <Id>Monitor.Availability.HealthRollup.McAfeeAgentHostsMcAfeeWindowsService</Id>
         <DisplayName>Monitor Availability HealthRollup McAfee Agent</DisplayName>
         <Description>Availability Health Rollup for McAfee Agent.</Description>

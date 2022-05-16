@@ -3,7 +3,7 @@
   <Manifest>
     <Identity>
       <ID>GripLogix.McAfee.Views</ID>
-      <Version>1.0.0.14</Version>
+      <Version>1.0.0.13</Version>
     </Identity>
     <Name>McAfee.Views</Name>
     <References>

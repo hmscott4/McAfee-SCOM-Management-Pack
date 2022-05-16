@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ManagementPack SchemaVersion="2.0" ContentReadable="true" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+﻿<?xml version="1.0" encoding="utf-8"?><ManagementPack xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" ContentReadable="true" SchemaVersion="2.0" OriginalSchemaVersion="2.0">
   <Manifest>
     <Identity>
       <ID>GripLogix.McAfee.Monitoring</ID>
-      <Version>1.0.0.277</Version>
+      <Version>1.0.0.279</Version>
     </Identity>
     <Name>McAfee.Monitoring</Name>
     <References>
@@ -24,22 +23,15 @@
       </Reference>
       <Reference Alias="GripLogix">
         <ID>GripLogix.McAfee.Discovery</ID>
-        <Version>1.0.0.214</Version>
+        <Version>1.0.0.213</Version>
         <PublicKeyToken>1947a4ec16eb327a</PublicKeyToken>
       </Reference>
     </References>
   </Manifest>
   <TypeDefinitions>
     <ModuleTypes>
-      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegKeyPath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegValue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
+      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" Accessibility="Internal" Batching="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegKeyPath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegValue" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Threshold" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
           <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
@@ -48,31 +40,12 @@
           <OverrideableParameter ID="Threshold" Selector="$Config/Threshold$" ParameterType="int" />
           <OverrideableParameter ID="Debug" Selector="$Config/Debug$" ParameterType="bool" />
         </OverrideableParameters>
-        <ModuleImplementation>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler">
-                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-                <SyncTime>$Config/SyncTime$</SyncTime>
-              </DataSource>
-              <ProbeAction ID="Script" TypeID="GripLogix.McAfee.Probe.PSRegCheckRegValue">
-                <RegKeyPath>$Config/RegKeyPath$</RegKeyPath>
-                <RegValue>$Config/RegValue$</RegValue>
-                <Debug>$Config/Debug$</Debug>
-              </ProbeAction>
-              <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-                <Expression>
-                  <SimpleExpression>
-                    <ValueExpression>
-                      <XPathQuery Type="Integer">Property[@Name='$Config/RegValue$']</XPathQuery>
-                    </ValueExpression>
-                    <Operator>Less</Operator>
-                    <ValueExpression>
-                      <Value Type="Integer">$Config/Threshold$</Value>
-                    </ValueExpression>
-                  </SimpleExpression>
-                </Expression>
-              </ConditionDetection>
+              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime></DataSource>
+              <ProbeAction ID="Script" TypeID="GripLogix.McAfee.Probe.PSRegCheckRegValue"><RegKeyPath>$Config/RegKeyPath$</RegKeyPath><RegValue>$Config/RegValue$</RegValue><Debug>$Config/Debug$</Debug></ProbeAction>
+              <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="Integer">Property[@Name='$Config/RegValue$']</XPathQuery></ValueExpression><Operator>Less</Operator><ValueExpression><Value Type="Integer">$Config/Threshold$</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
             </MemberModules>
             <Composition>
               <Node ID="CD">
@@ -85,31 +58,13 @@
         </ModuleImplementation>
         <OutputType>System!System.PropertyBagData</OutputType>
       </DataSourceModuleType>
-      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegKeyPath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegValue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TimeStampType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
-        <OverrideableParameters></OverrideableParameters>
-        <ModuleImplementation>
+      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag" Accessibility="Internal" Batching="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegKeyPath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegValue" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TimeStampType" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Threshold" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler">
-                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-                <SyncTime>$Config/SyncTime$</SyncTime>
-              </DataSource>
-              <ProbeAction ID="Script" TypeID="GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp">
-                <RegKeyPath>$Config/RegKeyPath$</RegKeyPath>
-                <RegValue>$Config/RegValue$</RegValue>
-                <TimeStampType>$Config/TimeStampType$</TimeStampType>
-                <Threshold>$Config/Threshold$</Threshold>
-                <Debug>$Config/Debug$</Debug>
-              </ProbeAction>
+              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime></DataSource>
+              <ProbeAction ID="Script" TypeID="GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp"><RegKeyPath>$Config/RegKeyPath$</RegKeyPath><RegValue>$Config/RegValue$</RegValue><TimeStampType>$Config/TimeStampType$</TimeStampType><Threshold>$Config/Threshold$</Threshold><Debug>$Config/Debug$</Debug></ProbeAction>
             </MemberModules>
             <Composition>
               <Node ID="Script">
@@ -120,51 +75,20 @@
         </ModuleImplementation>
         <OutputType>System!System.PropertyBagData</OutputType>
       </DataSourceModuleType>
-      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" Accessibility="Internal">
-        <Configuration>
-          <xsd:element minOccurs="1" name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element minOccurs="0" name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element minOccurs="1" name="ComputerName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element minOccurs="1" name="RegValuePath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element minOccurs="1" name="DesiredRegValue" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
+      <DataSourceModuleType ID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" Accessibility="Internal" Batching="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" minOccurs="1" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" minOccurs="0" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" minOccurs="1" name="ComputerName" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" minOccurs="1" name="RegValuePath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" minOccurs="1" name="DesiredRegValue" type="xsd:integer" /></Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
           <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
           <OverrideableParameter ID="RegValuePath" Selector="$Config/RegValuePath$" ParameterType="string" />
           <OverrideableParameter ID="DesiredRegValue" Selector="$Config/DesiredRegValue$" ParameterType="int" />
         </OverrideableParameters>
-        <ModuleImplementation>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Scheduler" TypeID="System!System.SimpleScheduler">
-                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-                <SyncTime>$Config/SyncTime$</SyncTime>
-              </DataSource>
-              <ProbeAction ID="RegProbe" TypeID="Windows!Microsoft.Windows.RegistryProbe">
-                <ComputerName>$Config/ComputerName$</ComputerName>
-                <RegistryAttributeDefinitions>
-                  <RegistryAttributeDefinition>
-                    <AttributeName>RegValue</AttributeName>
-                    <Path>$Config/RegValuePath$</Path>
-                    <PathType>1</PathType>
-                    <AttributeType>1</AttributeType>
-                  </RegistryAttributeDefinition>
-                </RegistryAttributeDefinitions>
-              </ProbeAction>
-              <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-                <Expression>
-                  <SimpleExpression>
-                    <ValueExpression>
-                      <XPathQuery Type="Integer">Values/RegValue</XPathQuery>
-                    </ValueExpression>
-                    <Operator>Less</Operator>
-                    <ValueExpression>
-                      <Value Type="Integer">$Config/DesiredRegValue$</Value>
-                    </ValueExpression>
-                  </SimpleExpression>
-                </Expression>
-              </ConditionDetection>
+              <DataSource ID="Scheduler" TypeID="System!System.SimpleScheduler"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime></DataSource>
+              <ProbeAction ID="RegProbe" TypeID="Windows!Microsoft.Windows.RegistryProbe"><ComputerName>$Config/ComputerName$</ComputerName><RegistryAttributeDefinitions><RegistryAttributeDefinition><AttributeName>RegValue</AttributeName><Path>$Config/RegValuePath$</Path><PathType>1</PathType><AttributeType>1</AttributeType></RegistryAttributeDefinition></RegistryAttributeDefinitions></ProbeAction>
+              <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="Integer">Values/RegValue</XPathQuery></ValueExpression><Operator>Less</Operator><ValueExpression><Value Type="Integer">$Config/DesiredRegValue$</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
             </MemberModules>
             <Composition>
               <Node ID="CD">
@@ -177,33 +101,13 @@
         </ModuleImplementation>
         <OutputType>Windows!Microsoft.Windows.RegistryData</OutputType>
       </DataSourceModuleType>
-      <DataSourceModuleType ID="GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Url" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ContentChecked" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ComputerName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TCPPort" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
-        <OverrideableParameters></OverrideableParameters>
-        <ModuleImplementation>
+      <DataSourceModuleType ID="GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag" Accessibility="Internal" Batching="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Name" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Url" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContentChecked" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ComputerName" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TCPPort" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler">
-                <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-                <SyncTime>$Config/SyncTime$</SyncTime>
-              </DataSource>
-              <ProbeAction ID="Script" TypeID="GripLogix.WebMon.WEBPage.Probe.WEBPageCheck">
-                <Name>$Config/Name$</Name>
-                <Url>$Config/Url$</Url>
-                <ContentChecked>$Config/ContentChecked$</ContentChecked>
-                <ComputerName>$Config/ComputerName$</ComputerName>
-                <TCPPort>$Config/TCPPort$</TCPPort>
-                <Debug>$Config/Debug$</Debug>
-              </ProbeAction>
+              <DataSource ID="Schedule" TypeID="System!System.SimpleScheduler"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime></DataSource>
+              <ProbeAction ID="Script" TypeID="GripLogix.WebMon.WEBPage.Probe.WEBPageCheck"><Name>$Config/Name$</Name><Url>$Config/Url$</Url><ContentChecked>$Config/ContentChecked$</ContentChecked><ComputerName>$Config/ComputerName$</ComputerName><TCPPort>$Config/TCPPort$</TCPPort><Debug>$Config/Debug$</Debug></ProbeAction>
             </MemberModules>
             <Composition>
               <Node ID="Script">
@@ -214,18 +118,12 @@
         </ModuleImplementation>
         <OutputType>System!System.PropertyBagData</OutputType>
       </DataSourceModuleType>
-      <ProbeActionModuleType ID="GripLogix.McAfee.Probe.PSRegCheckRegValue" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="RegKeyPath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegValue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
-        <ModuleImplementation>
+      <ProbeActionModuleType ID="GripLogix.McAfee.Probe.PSRegCheckRegValue" Accessibility="Internal" Batching="false" PassThrough="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegKeyPath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegValue" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>McAfeeCheckRegValue.ps1</ScriptName>
-                <ScriptBody><![CDATA[## Author: Merijn Overgaauw, GripLogix Consulting
+              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe"><ScriptName>McAfeeCheckRegValue.ps1</ScriptName><ScriptBody>## Author: Merijn Overgaauw, GripLogix Consulting
 
 # Get parameters
 param($regKeyPath, $regValue, $debug)
@@ -291,23 +189,7 @@ Log-DebugEvent $PROPERTYBAG_CREATED $message
 
 $bag
 $message = "Script ended $regKeyPath, $regValue, $debug"
-Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
-                <Parameters>
-                  <Parameter>
-                    <Name>RegKeyPath</Name>
-                    <Value>$Config/RegKeyPath$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RegValue</Name>
-                    <Value>$Config/RegValue$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>Debug</Name>
-                    <Value>$Config/Debug$</Value>
-                  </Parameter>
-                </Parameters>
-                <TimeoutSeconds>300</TimeoutSeconds>
-              </ProbeAction>
+Log-DebugEvent $SCRIPT_ENDED $message</ScriptBody><Parameters><Parameter><Name>RegKeyPath</Name><Value>$Config/RegKeyPath$</Value></Parameter><Parameter><Name>RegValue</Name><Value>$Config/RegValue$</Value></Parameter><Parameter><Name>Debug</Name><Value>$Config/Debug$</Value></Parameter></Parameters><TimeoutSeconds>300</TimeoutSeconds></ProbeAction>
             </MemberModules>
             <Composition>
               <Node ID="Script" />
@@ -317,20 +199,12 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
         <OutputType>System!System.PropertyBagData</OutputType>
         <TriggerOnly>true</TriggerOnly>
       </ProbeActionModuleType>
-      <ProbeActionModuleType ID="GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="RegKeyPath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegValue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TimeStampType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
-        <ModuleImplementation>
+      <ProbeActionModuleType ID="GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp" Accessibility="Internal" Batching="false" PassThrough="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegKeyPath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegValue" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TimeStampType" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Threshold" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>McAfeeCheckRegValue.TimeStamp.ps1</ScriptName>
-                <ScriptBody><![CDATA[## Author: Merijn Overgaauw, GripLogix Consulting
+              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe"><ScriptName>McAfeeCheckRegValue.TimeStamp.ps1</ScriptName><ScriptBody>## Author: Merijn Overgaauw, GripLogix Consulting
 
 # Get parameters
 param($regKeyPath, $regValue, $timeStampType, $threshold, $debug)
@@ -421,31 +295,7 @@ Log-DebugEvent $PROPERTYBAG_CREATED $message
 
 $bag
 $message = "Script ended $regKeyPath, $regValue, $timeStampType, $threshold, $debug"
-Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
-                <Parameters>
-                  <Parameter>
-                    <Name>RegKeyPath</Name>
-                    <Value>$Config/RegKeyPath$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>RegValue</Name>
-                    <Value>$Config/RegValue$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>TimeStampType</Name>
-                    <Value>$Config/TimeStampType$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>Threshold</Name>
-                    <Value>$Config/Threshold$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>Debug</Name>
-                    <Value>$Config/Debug$</Value>
-                  </Parameter>
-                </Parameters>
-                <TimeoutSeconds>300</TimeoutSeconds>
-              </ProbeAction>
+Log-DebugEvent $SCRIPT_ENDED $message</ScriptBody><Parameters><Parameter><Name>RegKeyPath</Name><Value>$Config/RegKeyPath$</Value></Parameter><Parameter><Name>RegValue</Name><Value>$Config/RegValue$</Value></Parameter><Parameter><Name>TimeStampType</Name><Value>$Config/TimeStampType$</Value></Parameter><Parameter><Name>Threshold</Name><Value>$Config/Threshold$</Value></Parameter><Parameter><Name>Debug</Name><Value>$Config/Debug$</Value></Parameter></Parameters><TimeoutSeconds>300</TimeoutSeconds></ProbeAction>
             </MemberModules>
             <Composition>
               <Node ID="Script" />
@@ -455,21 +305,12 @@ Log-DebugEvent $SCRIPT_ENDED $message]]></ScriptBody>
         <OutputType>System!System.PropertyBagData</OutputType>
         <TriggerOnly>true</TriggerOnly>
       </ProbeActionModuleType>
-      <ProbeActionModuleType ID="GripLogix.WebMon.WEBPage.Probe.WEBPageCheck" Accessibility="Internal">
-        <Configuration>
-          <xsd:element name="Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Url" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ContentChecked" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ComputerName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TCPPort" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
-        <ModuleImplementation>
+      <ProbeActionModuleType ID="GripLogix.WebMon.WEBPage.Probe.WEBPageCheck" Accessibility="Internal" Batching="false" PassThrough="false">
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Name" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Url" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContentChecked" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ComputerName" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TCPPort" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
+        <ModuleImplementation Isolation="Any">
           <Composite>
             <MemberModules>
-              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe">
-                <ScriptName>McAfeeePolicyUrlCheck.ps1</ScriptName>
-                <ScriptBody><![CDATA[## Author: Merijn Overgaauw, GripLogix Consulting
+              <ProbeAction ID="Script" TypeID="Windows!Microsoft.Windows.PowerShellPropertyBagTriggerOnlyProbe"><ScriptName>McAfeeePolicyUrlCheck.ps1</ScriptName><ScriptBody>## Author: Merijn Overgaauw, GripLogix Consulting
 
 #==================================================================================
 ## Get parameters
@@ -594,35 +435,7 @@ $bag
 $message = "Script ended."
 Log-DebugEvent $SCRIPT_ENDED $message
 
-]]></ScriptBody>
-                <Parameters>
-                  <Parameter>
-                    <Name>Name</Name>
-                    <Value>$Config/Name$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>Url</Name>
-                    <Value>$Config/Url$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>ContentChecked</Name>
-                    <Value>$Config/ContentChecked$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>ComputerName</Name>
-                    <Value>$Config/ComputerName$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>TCPPort</Name>
-                    <Value>$Config/TCPPort$</Value>
-                  </Parameter>
-                  <Parameter>
-                    <Name>Debug</Name>
-                    <Value>$Config/Debug$</Value>
-                  </Parameter>
-                </Parameters>
-                <TimeoutSeconds>300</TimeoutSeconds>
-              </ProbeAction>
+</ScriptBody><Parameters><Parameter><Name>Name</Name><Value>$Config/Name$</Value></Parameter><Parameter><Name>Url</Name><Value>$Config/Url$</Value></Parameter><Parameter><Name>ContentChecked</Name><Value>$Config/ContentChecked$</Value></Parameter><Parameter><Name>ComputerName</Name><Value>$Config/ComputerName$</Value></Parameter><Parameter><Name>TCPPort</Name><Value>$Config/TCPPort$</Value></Parameter><Parameter><Name>Debug</Name><Value>$Config/Debug$</Value></Parameter></Parameters><TimeoutSeconds>300</TimeoutSeconds></ProbeAction>
             </MemberModules>
             <Composition>
               <Node ID="Script" />
@@ -639,15 +452,7 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <MonitorTypeState ID="OverThreshold" NoDetection="false" />
           <MonitorTypeState ID="UnderThreshold" NoDetection="false" />
         </MonitorTypeStates>
-        <Configuration>
-          <xsd:element name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegKeyPath" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="RegValue" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TimeStampType" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Threshold" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegKeyPath" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="RegValue" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TimeStampType" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Threshold" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
           <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
@@ -656,41 +461,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
         </OverrideableParameters>
         <MonitorImplementation>
           <MemberModules>
-            <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag">
-              <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-              <SyncTime>$Config/SyncTime$</SyncTime>
-              <RegKeyPath>$Config/RegKeyPath$</RegKeyPath>
-              <RegValue>$Config/RegValue$</RegValue>
-              <TimeStampType>$Config/TimeStampType$</TimeStampType>
-              <Threshold>$Config/Threshold$</Threshold>
-              <Debug>$Config/Debug$</Debug>
-            </DataSource>
-            <ConditionDetection ID="FilterOverThreshold" TypeID="System!System.ExpressionFilter">
-              <Expression>
-                <SimpleExpression>
-                  <ValueExpression>
-                    <XPathQuery Type="Double">Property[@Name='DaysOld']</XPathQuery>
-                  </ValueExpression>
-                  <Operator>Greater</Operator>
-                  <ValueExpression>
-                    <Value Type="Integer">$Config/Threshold$</Value>
-                  </ValueExpression>
-                </SimpleExpression>
-              </Expression>
-            </ConditionDetection>
-            <ConditionDetection ID="FilterUnderThreshold" TypeID="System!System.ExpressionFilter">
-              <Expression>
-                <SimpleExpression>
-                  <ValueExpression>
-                    <XPathQuery Type="Double">Property[@Name='DaysOld']</XPathQuery>
-                  </ValueExpression>
-                  <Operator>LessEqual</Operator>
-                  <ValueExpression>
-                    <Value Type="Integer">$Config/Threshold$</Value>
-                  </ValueExpression>
-                </SimpleExpression>
-              </Expression>
-            </ConditionDetection>
+            <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime><RegKeyPath>$Config/RegKeyPath$</RegKeyPath><RegValue>$Config/RegValue$</RegValue><TimeStampType>$Config/TimeStampType$</TimeStampType><Threshold>$Config/Threshold$</Threshold><Debug>$Config/Debug$</Debug></DataSource>
+            <ConditionDetection ID="FilterOverThreshold" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="Double">Property[@Name='DaysOld']</XPathQuery></ValueExpression><Operator>Greater</Operator><ValueExpression><Value Type="Integer">$Config/Threshold$</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
+            <ConditionDetection ID="FilterUnderThreshold" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="Double">Property[@Name='DaysOld']</XPathQuery></ValueExpression><Operator>LessEqual</Operator><ValueExpression><Value Type="Integer">$Config/Threshold$</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
           </MemberModules>
           <RegularDetections>
             <RegularDetection MonitorTypeStateID="OverThreshold">
@@ -711,16 +484,7 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <MonitorTypeState ID="FAILED" NoDetection="false" />
           <MonitorTypeState ID="SUCCESS" NoDetection="false" />
         </MonitorTypeStates>
-        <Configuration>
-          <xsd:element name="IntervalSeconds" type="xsd:integer" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="SyncTime" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Name" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Url" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ContentChecked" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="ComputerName" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="TCPPort" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-          <xsd:element name="Debug" type="xsd:boolean" xmlns:xsd="http://www.w3.org/2001/XMLSchema" />
-        </Configuration>
+        <Configuration><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="IntervalSeconds" type="xsd:integer" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="SyncTime" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Name" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Url" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ContentChecked" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ComputerName" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TCPPort" type="xsd:string" /><xsd:element xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Debug" type="xsd:boolean" /></Configuration>
         <OverrideableParameters>
           <OverrideableParameter ID="IntervalSeconds" Selector="$Config/IntervalSeconds$" ParameterType="int" />
           <OverrideableParameter ID="SyncTime" Selector="$Config/SyncTime$" ParameterType="string" />
@@ -732,72 +496,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
         </OverrideableParameters>
         <MonitorImplementation>
           <MemberModules>
-            <DataSource ID="DS" TypeID="GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag">
-              <IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds>
-              <SyncTime>$Config/SyncTime$</SyncTime>
-              <Name>$Config/Name$</Name>
-              <Url>$Config/Url$</Url>
-              <ContentChecked>$Config/ContentChecked$</ContentChecked>
-              <ComputerName>$Config/ComputerName$</ComputerName>
-              <TCPPort>$Config/TCPPort$</TCPPort>
-              <Debug>$Config/Debug$</Debug>
-            </DataSource>
-            <ConditionDetection ID="FilterSUCCESSStatus" TypeID="System!System.ExpressionFilter">
-              <Expression>
-                <Or>
-                  <Expression>
-                    <SimpleExpression>
-                      <ValueExpression>
-                        <XPathQuery Type="String">Property[@Name='ContentMatch']</XPathQuery>
-                      </ValueExpression>
-                      <Operator>Equal</Operator>
-                      <ValueExpression>
-                        <Value Type="String">SUCCESS</Value>
-                      </ValueExpression>
-                    </SimpleExpression>
-                  </Expression>
-                  <Expression>
-                    <SimpleExpression>
-                      <ValueExpression>
-                        <XPathQuery Type="String">Property[@Name='TCPportCheck']</XPathQuery>
-                      </ValueExpression>
-                      <Operator>Equal</Operator>
-                      <ValueExpression>
-                        <Value Type="String">True</Value>
-                      </ValueExpression>
-                    </SimpleExpression>
-                  </Expression>
-                </Or>
-              </Expression>
-            </ConditionDetection>
-            <ConditionDetection ID="FilterFAILEDStatus" TypeID="System!System.ExpressionFilter">
-              <Expression>
-                <And>
-                  <Expression>
-                    <SimpleExpression>
-                      <ValueExpression>
-                        <XPathQuery Type="String">Property[@Name='ContentMatch']</XPathQuery>
-                      </ValueExpression>
-                      <Operator>NotEqual</Operator>
-                      <ValueExpression>
-                        <Value Type="String">SUCCESS</Value>
-                      </ValueExpression>
-                    </SimpleExpression>
-                  </Expression>
-                  <Expression>
-                    <SimpleExpression>
-                      <ValueExpression>
-                        <XPathQuery Type="String">Property[@Name='TCPportCheck']</XPathQuery>
-                      </ValueExpression>
-                      <Operator>NotEqual</Operator>
-                      <ValueExpression>
-                        <Value Type="String">True</Value>
-                      </ValueExpression>
-                    </SimpleExpression>
-                  </Expression>
-                </And>
-              </Expression>
-            </ConditionDetection>
+            <DataSource ID="DS" TypeID="GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag"><IntervalSeconds>$Config/IntervalSeconds$</IntervalSeconds><SyncTime>$Config/SyncTime$</SyncTime><Name>$Config/Name$</Name><Url>$Config/Url$</Url><ContentChecked>$Config/ContentChecked$</ContentChecked><ComputerName>$Config/ComputerName$</ComputerName><TCPPort>$Config/TCPPort$</TCPPort><Debug>$Config/Debug$</Debug></DataSource>
+            <ConditionDetection ID="FilterSUCCESSStatus" TypeID="System!System.ExpressionFilter"><Expression><Or><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Property[@Name='ContentMatch']</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">SUCCESS</Value></ValueExpression></SimpleExpression></Expression><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Property[@Name='TCPportCheck']</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">True</Value></ValueExpression></SimpleExpression></Expression></Or></Expression></ConditionDetection>
+            <ConditionDetection ID="FilterFAILEDStatus" TypeID="System!System.ExpressionFilter"><Expression><And><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Property[@Name='ContentMatch']</XPathQuery></ValueExpression><Operator>NotEqual</Operator><ValueExpression><Value Type="String">SUCCESS</Value></ValueExpression></SimpleExpression></Expression><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Property[@Name='TCPportCheck']</XPathQuery></ValueExpression><Operator>NotEqual</Operator><ValueExpression><Value Type="String">True</Value></ValueExpression></SimpleExpression></Expression></And></Expression></ConditionDetection>
           </MemberModules>
           <RegularDetections>
             <RegularDetection MonitorTypeStateID="FAILED">
@@ -817,272 +518,86 @@ Log-DebugEvent $SCRIPT_ENDED $message
   </TypeDefinitions>
   <Monitoring>
     <Rules>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMcShield" Target="Windows!Microsoft.Windows.Computer" Enabled="false" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMcShield" Enabled="false" Target="Windows!Microsoft.Windows.Computer" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider">
-            <ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
-            <RegistryAttributeDefinitions>
-              <RegistryAttributeDefinition>
-                <AttributeName>RegExists</AttributeName>
-                <Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN8800</Path>
-                <PathType>0</PathType>
-                <AttributeType>0</AttributeType>
-              </RegistryAttributeDefinition>
-            </RegistryAttributeDefinitions>
-            <Frequency>3600</Frequency>
-          </DataSource>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider"><ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName><RegistryAttributeDefinitions><RegistryAttributeDefinition><AttributeName>RegExists</AttributeName><Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN8800</Path><PathType>0</PathType><AttributeType>0</AttributeType></RegistryAttributeDefinition></RegistryAttributeDefinitions><Frequency>3600</Frequency></DataSource>
         </DataSources>
-        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-          <Expression>
-            <SimpleExpression>
-              <ValueExpression>
-                <XPathQuery Type="String">Values/RegExists</XPathQuery>
-              </ValueExpression>
-              <Operator>Equal</Operator>
-              <ValueExpression>
-                <Value Type="String">false</Value>
-              </ValueExpression>
-            </SimpleExpression>
-          </Expression>
-        </ConditionDetection>
+        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Values/RegExists</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">false</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
         <WriteActions>
-          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>0</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMcShield.AlertMessage"]$</AlertMessageId>
-          </WriteAction>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>0</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMcShield.AlertMessage"]$</AlertMessageId></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove" Target="Windows!Microsoft.Windows.Computer" Enabled="false" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove" Enabled="false" Target="Windows!Microsoft.Windows.Computer" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.Win32ServiceInformationProvider">
-            <ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
-            <ServiceName>Vsepflt</ServiceName>
-            <Frequency>3600</Frequency>
-            <CheckStartupType>false</CheckStartupType>
-          </DataSource>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.Win32ServiceInformationProvider"><ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName><ServiceName>Vsepflt</ServiceName><Frequency>3600</Frequency><CheckStartupType>false</CheckStartupType></DataSource>
         </DataSources>
-        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-          <Expression>
-            <SimpleExpression>
-              <ValueExpression>
-                <XPathQuery Type="Integer">Property[@Name='State']</XPathQuery>
-              </ValueExpression>
-              <Operator>Equal</Operator>
-              <ValueExpression>
-                <Value Type="Integer">8</Value>
-              </ValueExpression>
-            </SimpleExpression>
-          </Expression>
-        </ConditionDetection>
+        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="Integer">Property[@Name='State']</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="Integer">8</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
         <WriteActions>
-          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>0</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove.AlertMessage"]$</AlertMessageId>
-            <AlertParameters>
-              <AlertParameter1>$Data/Property[@Name='State']$</AlertParameter1>
-            </AlertParameters>
-          </WriteAction>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>0</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeMove.AlertMessage"]$</AlertMessageId><AlertParameters><AlertParameter1>$Data/Property[@Name='State']$</AlertParameter1></AlertParameters></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity" Target="Windows!Microsoft.Windows.Computer" Enabled="false" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity" Enabled="false" Target="Windows!Microsoft.Windows.Computer" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider">
-            <ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
-            <RegistryAttributeDefinitions>
-              <RegistryAttributeDefinition>
-                <AttributeName>RegExists</AttributeName>
-                <Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_GS_1010</Path>
-                <PathType>0</PathType>
-                <AttributeType>0</AttributeType>
-              </RegistryAttributeDefinition>
-            </RegistryAttributeDefinitions>
-            <Frequency>3600</Frequency>
-          </DataSource>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider"><ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName><RegistryAttributeDefinitions><RegistryAttributeDefinition><AttributeName>RegExists</AttributeName><Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_GS_1010</Path><PathType>0</PathType><AttributeType>0</AttributeType></RegistryAttributeDefinition></RegistryAttributeDefinitions><Frequency>3600</Frequency></DataSource>
         </DataSources>
-        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-          <Expression>
-            <SimpleExpression>
-              <ValueExpression>
-                <XPathQuery Type="String">Values/RegExists</XPathQuery>
-              </ValueExpression>
-              <Operator>Equal</Operator>
-              <ValueExpression>
-                <Value Type="String">false</Value>
-              </ValueExpression>
-            </SimpleExpression>
-          </Expression>
-        </ConditionDetection>
+        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Values/RegExists</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">false</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
         <WriteActions>
-          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>0</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity.AlertMessage"]$</AlertMessageId>
-          </WriteAction>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>0</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeEndPointSecurity.AlertMessage"]$</AlertMessageId></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeThreadPrevention" Target="Windows!Microsoft.Windows.Computer" Enabled="false" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeThreadPrevention" Enabled="false" Target="Windows!Microsoft.Windows.Computer" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider">
-            <ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
-            <RegistryAttributeDefinitions>
-              <RegistryAttributeDefinition>
-                <AttributeName>RegExists</AttributeName>
-                <Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_AM_1010</Path>
-                <PathType>0</PathType>
-                <AttributeType>0</AttributeType>
-              </RegistryAttributeDefinition>
-            </RegistryAttributeDefinitions>
-            <Frequency>3600</Frequency>
-          </DataSource>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider"><ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName><RegistryAttributeDefinitions><RegistryAttributeDefinition><AttributeName>RegExists</AttributeName><Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_AM_1010</Path><PathType>0</PathType><AttributeType>0</AttributeType></RegistryAttributeDefinition></RegistryAttributeDefinitions><Frequency>3600</Frequency></DataSource>
         </DataSources>
-        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-          <Expression>
-            <SimpleExpression>
-              <ValueExpression>
-                <XPathQuery Type="String">Values/RegExists</XPathQuery>
-              </ValueExpression>
-              <Operator>Equal</Operator>
-              <ValueExpression>
-                <Value Type="String">false</Value>
-              </ValueExpression>
-            </SimpleExpression>
-          </Expression>
-        </ConditionDetection>
+        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Values/RegExists</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">false</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
         <WriteActions>
-          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>0</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeThreadPrevention.AlertMessage"]$</AlertMessageId>
-          </WriteAction>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>0</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeThreadPrevention.AlertMessage"]$</AlertMessageId></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeAgent" Target="Windows!Microsoft.Windows.Computer" Enabled="false" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeAgent" Enabled="false" Target="Windows!Microsoft.Windows.Computer" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider">
-            <ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName>
-            <RegistryAttributeDefinitions>
-              <RegistryAttributeDefinition>
-                <AttributeName>RegExists</AttributeName>
-                <Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</Path>
-                <PathType>0</PathType>
-                <AttributeType>0</AttributeType>
-              </RegistryAttributeDefinition>
-            </RegistryAttributeDefinitions>
-            <Frequency>3600</Frequency>
-          </DataSource>
+          <DataSource ID="DS" TypeID="Windows!Microsoft.Windows.RegistryProvider"><ComputerName>$Target/Property[Type='Windows!Microsoft.Windows.Computer']/NetworkName$</ComputerName><RegistryAttributeDefinitions><RegistryAttributeDefinition><AttributeName>RegExists</AttributeName><Path>SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</Path><PathType>0</PathType><AttributeType>0</AttributeType></RegistryAttributeDefinition></RegistryAttributeDefinitions><Frequency>3600</Frequency></DataSource>
         </DataSources>
-        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter">
-          <Expression>
-            <SimpleExpression>
-              <ValueExpression>
-                <XPathQuery Type="String">Values/RegExists</XPathQuery>
-              </ValueExpression>
-              <Operator>Equal</Operator>
-              <ValueExpression>
-                <Value Type="String">false</Value>
-              </ValueExpression>
-            </SimpleExpression>
-          </Expression>
-        </ConditionDetection>
+        <ConditionDetection ID="CD" TypeID="System!System.ExpressionFilter"><Expression><SimpleExpression><ValueExpression><XPathQuery Type="String">Values/RegExists</XPathQuery></ValueExpression><Operator>Equal</Operator><ValueExpression><Value Type="String">false</Value></ValueExpression></SimpleExpression></Expression></ConditionDetection>
         <WriteActions>
-          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>0</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeAgent.AlertMessage"]$</AlertMessageId>
-          </WriteAction>
+          <WriteAction ID="Alert" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>0</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.Installation.McAfeeAgent.AlertMessage"]$</AlertMessageId></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.McShield" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.McShield" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag">
-            <IntervalSeconds>14400</IntervalSeconds>
-            <SyncTime />
-            <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN*</RegKeyPath>
-            <RegValue>HotfixVersions</RegValue>
-            <Threshold>4</Threshold>
-            <Debug>false</Debug>
-          </DataSource>
+          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag"><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN*</RegKeyPath><RegValue>HotfixVersions</RegValue><Threshold>4</Threshold><Debug>false</Debug></DataSource>
         </DataSources>
         <WriteActions>
-          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>1</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.McShield.AlertMessage"]$</AlertMessageId>
-            <AlertParameters>
-              <AlertParameter1>$Data/Property[@Name='HotfixVersions']$</AlertParameter1>
-              <AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2>
-            </AlertParameters>
-            <Suppression>
-              <SuppressionValue>$Data/Property[@Name='HotfixVersions']$</SuppressionValue>
-            </Suppression>
-          </WriteAction>
+          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>1</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.McShield.AlertMessage"]$</AlertMessageId><AlertParameters><AlertParameter1>$Data/Property[@Name='HotfixVersions']$</AlertParameter1><AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2></AlertParameters><Suppression><SuppressionValue>$Data/Property[@Name='HotfixVersions']$</SuppressionValue></Suppression></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.EndPointSecurity" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.EndPointSecurity" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag">
-            <IntervalSeconds>14400</IntervalSeconds>
-            <SyncTime />
-            <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_GS_*</RegKeyPath>
-            <RegValue>PatchVersion</RegValue>
-            <Threshold>2</Threshold>
-            <Debug>false</Debug>
-          </DataSource>
+          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag"><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_GS_*</RegKeyPath><RegValue>PatchVersion</RegValue><Threshold>2</Threshold><Debug>false</Debug></DataSource>
         </DataSources>
         <WriteActions>
-          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>1</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.EndPointSecurity.AlertMessage"]$</AlertMessageId>
-            <AlertParameters>
-              <AlertParameter1>$Data/Property[@Name='PatchVersion']$</AlertParameter1>
-              <AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2>
-            </AlertParameters>
-            <Suppression>
-              <SuppressionValue>$Data/Property[@Name='PatchVersion']$</SuppressionValue>
-            </Suppression>
-          </WriteAction>
+          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>1</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.EndPointSecurity.AlertMessage"]$</AlertMessageId><AlertParameters><AlertParameter1>$Data/Property[@Name='PatchVersion']$</AlertParameter1><AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2></AlertParameters><Suppression><SuppressionValue>$Data/Property[@Name='PatchVersion']$</SuppressionValue></Suppression></WriteAction>
         </WriteActions>
       </Rule>
-      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.ThreadPrevention" Target="GripLogix!GripLogix.McAfee.McAfeeThreadPrevention" Enabled="true" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
+      <Rule ID="GripLogix.McAfee.Monitoring.Rule.PatchLevel.ThreadPrevention" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeThreadPrevention" ConfirmDelivery="false" Remotable="true" Priority="Normal" DiscardLevel="100">
         <Category>Alert</Category>
         <DataSources>
-          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag">
-            <IntervalSeconds>14400</IntervalSeconds>
-            <SyncTime />
-            <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_AM_*</RegKeyPath>
-            <RegValue>PatchVersion</RegValue>
-            <Threshold>2</Threshold>
-            <Debug>false</Debug>
-          </DataSource>
+          <DataSource ID="DS" TypeID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag"><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\ENDP_AM_*</RegKeyPath><RegValue>PatchVersion</RegValue><Threshold>2</Threshold><Debug>false</Debug></DataSource>
         </DataSources>
         <WriteActions>
-          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert">
-            <Priority>1</Priority>
-            <Severity>1</Severity>
-            <AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.ThreadPrevention.AlertMessage"]$</AlertMessageId>
-            <AlertParameters>
-              <AlertParameter1>$Data/Property[@Name='PatchVersion']$</AlertParameter1>
-              <AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2>
-            </AlertParameters>
-            <Suppression>
-              <SuppressionValue>$Data/Property[@Name='PatchVersion']$</SuppressionValue>
-            </Suppression>
-          </WriteAction>
+          <WriteAction ID="WA" TypeID="Health!System.Health.GenerateAlert"><Priority>1</Priority><Severity>1</Severity><AlertMessageId>$MPElement[Name="GripLogix.McAfee.Monitoring.Rule.PatchLevel.ThreadPrevention.AlertMessage"]$</AlertMessageId><AlertParameters><AlertParameter1>$Data/Property[@Name='PatchVersion']$</AlertParameter1><AlertParameter2>$Data/Property[@Name='Error']$</AlertParameter2></AlertParameters><Suppression><SuppressionValue>$Data/Property[@Name='PatchVersion']$</SuppressionValue></Suppression></WriteAction>
         </WriteActions>
       </Rule>
     </Rules>
     <Monitors>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.LastPolicyUpdateTime.McAfeeEndPointSecurity" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.LastPolicyUpdateTime.McAfeeEndPointSecurity" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.LastPolicyUpdateTime.McAfeeEndPointSecurity.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1099,17 +614,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="OverThreshold" MonitorTypeStateID="OverThreshold" HealthState="Error" />
           <OperationalState ID="UnderThreshold" MonitorTypeStateID="UnderThreshold" HealthState="Success" />
         </OperationalStates>
-        <Configuration>
-          <IntervalSeconds>14400</IntervalSeconds>
-          <SyncTime />
-          <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</RegKeyPath>
-          <RegValue>LastPolicyUpdateTime</RegValue>
-          <TimeStampType>epoch</TimeStampType>
-          <Threshold>5</Threshold>
-          <Debug>true</Debug>
-        </Configuration>
+        <Configuration><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</RegKeyPath><RegValue>LastPolicyUpdateTime</RegValue><TimeStampType>epoch</TimeStampType><Threshold>5</Threshold><Debug>true</Debug></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.DatInstallDate.McAfeeMcShield" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.DatInstallDate.McAfeeMcShield" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.DatInstallDate.McAfeeMcShield.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1126,17 +633,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="OverThreshold" MonitorTypeStateID="OverThreshold" HealthState="Error" />
           <OperationalState ID="UnderThreshold" MonitorTypeStateID="UnderThreshold" HealthState="Success" />
         </OperationalStates>
-        <Configuration>
-          <IntervalSeconds>14400</IntervalSeconds>
-          <SyncTime />
-          <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN*</RegKeyPath>
-          <RegValue>DatInstallDate</RegValue>
-          <TimeStampType>humanDateTimeWithoutSeparators</TimeStampType>
-          <Threshold>5</Threshold>
-          <Debug>true</Debug>
-        </Configuration>
+        <Configuration><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Application Plugins\VIRUSCAN*</RegKeyPath><RegValue>DatInstallDate</RegValue><TimeStampType>humanDateTimeWithoutSeparators</TimeStampType><Threshold>5</Threshold><Debug>true</Debug></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.LastASCTime.McAfeeEndPointSecurity" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.LastASCTime.McAfeeEndPointSecurity" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.LastASCTime.McAfeeEndPointSecurity.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1153,17 +652,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="OverThreshold" MonitorTypeStateID="OverThreshold" HealthState="Error" />
           <OperationalState ID="UnderThreshold" MonitorTypeStateID="UnderThreshold" HealthState="Success" />
         </OperationalStates>
-        <Configuration>
-          <IntervalSeconds>14400</IntervalSeconds>
-          <SyncTime />
-          <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</RegKeyPath>
-          <RegValue>LastASCTime</RegValue>
-          <TimeStampType>epoch</TimeStampType>
-          <Threshold>5</Threshold>
-          <Debug>true</Debug>
-        </Configuration>
+        <Configuration><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\Network Associates\ePolicy Orchestrator\Agent</RegKeyPath><RegValue>LastASCTime</RegValue><TimeStampType>epoch</TimeStampType><Threshold>5</Threshold><Debug>true</Debug></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.AMCoreContentDate.McAfeeThreadPrevention" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeThreadPrevention" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.AMCoreContentDate.McAfeeThreadPrevention" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeThreadPrevention" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" TypeID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" ConfirmDelivery="false">
         <Category>ConfigurationHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.AMCoreContentDate.McAfeeThreadPrevention.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1180,17 +671,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="OverThreshold" MonitorTypeStateID="OverThreshold" HealthState="Error" />
           <OperationalState ID="UnderThreshold" MonitorTypeStateID="UnderThreshold" HealthState="Success" />
         </OperationalStates>
-        <Configuration>
-          <IntervalSeconds>14400</IntervalSeconds>
-          <SyncTime />
-          <RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\McAfee\AVSolution\DS\DS\</RegKeyPath>
-          <RegValue>szContentCreationDate</RegValue>
-          <TimeStampType>humanDateWithSeparators</TimeStampType>
-          <Threshold>5</Threshold>
-          <Debug>false</Debug>
-        </Configuration>
+        <Configuration><IntervalSeconds>14400</IntervalSeconds><SyncTime /><RegKeyPath>HKLM:\\SOFTWARE\Wow6432Node\McAfee\AVSolution\DS\DS\</RegKeyPath><RegValue>szContentCreationDate</RegValue><TimeStampType>humanDateWithSeparators</TimeStampType><Threshold>5</Threshold><Debug>false</Debug></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEpolicyOrchestrator" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEpolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEpolicyOrchestrator" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEpolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEpolicyOrchestrator.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1205,13 +688,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEpolicyOrchestrator"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEpolicyOrchestrator"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMcShield" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMcShield" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMcShield" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMcShield" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMcShield.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1226,13 +705,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMcShield"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMcShield"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgentHandler" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgentHandler" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgentHandler" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgentHandler" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgentHandler.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1247,13 +722,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgentHandler"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgentHandler"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMoveAgentless" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMoveAgentless" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMoveAgentless" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMoveAgentless" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeMoveAgentless.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1268,13 +739,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMoveAgentless"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeMoveAgentless"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEndPointSecurity" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEndPointSecurity" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeEndPointSecurity.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1289,13 +756,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEndPointSecurity"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeEndPointSecurity"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.URL.ePolicyOrchestrator" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.URL.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.URL.ePolicyOrchestrator" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.URL.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.URL.ePolicyOrchestrator.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1310,18 +773,9 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="FAILED" MonitorTypeStateID="FAILED" HealthState="Error" />
           <OperationalState ID="SUCCESS" MonitorTypeStateID="SUCCESS" HealthState="Success" />
         </OperationalStates>
-        <Configuration>
-          <IntervalSeconds>900</IntervalSeconds>
-          <SyncTime />
-          <Name>McAfee ePolicy Orchestrator URL</Name>
-          <Url>https://localhost:8443/core/orionSplashScreen.do</Url>
-          <ContentChecked>ePolicy Orchestrator</ContentChecked>
-          <ComputerName>localhost</ComputerName>
-          <TCPPort>8443</TCPPort>
-          <Debug>true</Debug>
-        </Configuration>
+        <Configuration><IntervalSeconds>900</IntervalSeconds><SyncTime /><Name>McAfee ePolicy Orchestrator URL</Name><Url>https://localhost:8443/core/orionSplashScreen.do</Url><ContentChecked>ePolicy Orchestrator</ContentChecked><ComputerName>localhost</ComputerName><TCPPort>8443</TCPPort><Debug>true</Debug></Configuration>
       </UnitMonitor>
-      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgent" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
+      <UnitMonitor ID="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgent" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" TypeID="Windows!Microsoft.Windows.CheckNTServiceStateMonitorType" ConfirmDelivery="false">
         <Category>AvailabilityHealth</Category>
         <AlertSettings AlertMessage="GripLogix.McAfee.Monitoring.Monitor.WindowsService.McAfeeAgent.AlertMessage">
           <AlertOnState>Error</AlertOnState>
@@ -1336,101 +790,97 @@ Log-DebugEvent $SCRIPT_ENDED $message
           <OperationalState ID="Running" MonitorTypeStateID="Running" HealthState="Success" />
           <OperationalState ID="NotRunning" MonitorTypeStateID="NotRunning" HealthState="Error" />
         </OperationalStates>
-        <Configuration>
-          <ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName>
-          <ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgent"]/ServiceName$</ServiceName>
-          <CheckStartupType>true</CheckStartupType>
-        </Configuration>
+        <Configuration><ComputerName>$Target/Host/Host/Property[Type="Windows!Microsoft.Windows.Computer"]/PrincipalName$</ComputerName><ServiceName>$Target/Property[Type="GripLogix!GripLogix.McAfee.WindowsService.McAfeeAgent"]/ServiceName$</ServiceName><CheckStartupType>true</CheckStartupType></Configuration>
       </UnitMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMoveAgentlessHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentless" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMoveAgentlessHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentless" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentHostsMcAfeeEndPointSecurity" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeEndPointSecurity" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentHostsMcAfeeEndPointSecurity" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeEndPointSecurity" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentlessGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentlessGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsePolicyOrchestratorGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsePolicyOrchestratorGroup" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsePolicyOrchestratorGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsePolicyOrchestratorGroup" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeServiceContainsMcAfeeAgentHandlerGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentHandlerGroup" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeServiceContainsMcAfeeAgentHandlerGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentHandlerGroup" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentContainsMcAfeeMcShield" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentContainsMcAfeeMcShield" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentHandlerGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentHandlerGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerGroupContainsMcAfeeAgentHandler" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeMoveAgentlessGroup" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentlessGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMoveAgentlessGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMoveAgentlessGroupContainsMcAfeeMoveAgentless" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeService.McAfeeServiceContainsMcAfeeAgentGroup" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeService" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeServiceContainsMcAfeeAgentGroup" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentGroupContainsMcAfeeAgent" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentGroup" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentGroupContainsMcAfeeAgent" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentContainsMcAfeeMcShield" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeAgentContainsMcAfeeMcShield" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentContainsMcAfeeMcShield" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeEndPointSecurityHostsThreadProtection" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsThreadProtection" MemberMonitor="Health!System.Health.ConfigurationState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Configuration.HealthRollup.McAfeeEndPointSecurityHostsThreadProtection" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.ConfigurationState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsThreadProtection" MemberMonitor="Health!System.Health.ConfigurationState">
         <Category>ConfigurationHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.ePolicyOrchestratorGroupContainsePolicyOrchestrator" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestratorGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorGroupContainsePolicyOrchestrator" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.ePolicyOrchestratorGroupContainsePolicyOrchestrator" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestratorGroup" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorGroupContainsePolicyOrchestrator" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.ePolicyOrchestratorHostsURLePolicyOrchestrator" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHandlerHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentHandler" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHandlerHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgentHandler" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHandlerHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeEndPointSecurityHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeEndPointSecurityHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeEndPointSecurity" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEndPointSecurityHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMcShieldHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMcShieldHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeMcShieldHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeMcShield" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeMcShieldHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.ePolicyOrchestrator" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeEpolicyOrchestratorHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
-      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHostsMcAfeeWindowsService" Accessibility="Internal" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
+      <DependencyMonitor ID="GripLogix.McAfee.Monitoring.Monitor.Availability.HealthRollup.McAfeeAgentHostsMcAfeeWindowsService" Accessibility="Public" Enabled="true" Target="GripLogix!GripLogix.McAfee.McAfeeAgent" ParentMonitorID="Health!System.Health.AvailabilityState" Remotable="true" Priority="Normal" RelationshipType="GripLogix!GripLogix.McAfee.Relationship.McAfeeAgentHostsMcAfeeWindowsService" MemberMonitor="Health!System.Health.AvailabilityState">
         <Category>AvailabilityHealth</Category>
         <Algorithm>WorstOf</Algorithm>
       </DependencyMonitor>
@@ -1462,6 +912,126 @@ Log-DebugEvent $SCRIPT_ENDED $message
   <LanguagePacks>
     <LanguagePack ID="ENU" IsDefault="true">
       <DisplayStrings>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag">
+          <Name>Property Bag</Name>
+          <Description>GripLogix McAfee DataSource Condition PSRegCheckRegValue PropertyBag</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+          <Description>Sync Time</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="RegKeyPath">
+          <Name>RegKeyPath</Name>
+          <Description>RegKeyPath</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="RegValue">
+          <Name>RegValue</Name>
+          <Description>RegValue</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="Threshold">
+          <Name>Threshold</Name>
+          <Description>Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.Condition.PSRegCheckRegValue.PropertyBag" SubElementID="Debug">
+          <Name>Debug</Name>
+          <Description>Debug</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.PSRegCheckRegValue.TimeStamp.PropertyBag">
+          <Name>TimeStamp Property Bag</Name>
+          <Description>GripLogix McAfee DataSource PSRegCheckRegValue TimeStamp PropertyBag</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.RegCheckRegistryValue">
+          <Name>Reg Check Registry Value</Name>
+          <Description>GripLogix McAfee DataSource RegCheckRegistryValue</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+          <Description>Sync Time</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" SubElementID="RegValuePath">
+          <Name>RegValuePath</Name>
+          <Description>RegValuePath</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.DataSource.RegCheckRegistryValue" SubElementID="DesiredRegValue">
+          <Name>DesiredRegValue</Name>
+          <Description>DesiredRegValue</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.DataSource.WEBPageCheck.PropertyBag">
+          <Name>WEBPageCheck PropertyBag</Name>
+          <Description>GripLogix WebMon WEBPage DataSource WEBPageCheck PropertyBag</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.PSRegCheckRegValue">
+          <Name>PS Reg Check Reg Value</Name>
+          <Description>GripLogix McAfee Probe PSRegCheckRegValue</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.Probe.PSRegCheckRegValue.TimeStamp">
+          <Name>PSRegCheckRegValue Time Stamp</Name>
+          <Description>GripLogix McAfee Probe PSRegCheckRegValue TimeStamp</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.Probe.WEBPageCheck">
+          <Name>WEB Page Check</Name>
+          <Description>GripLogix WebMon WEBPage Probe WEBPageCheck</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp">
+          <Name>PSRegCheckRegValue Time Stamp</Name>
+          <Description>GripLogix McAfee MonitorType PSRegCheckRegValue TimeStamp</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+          <Description>Sync Time</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" SubElementID="Debug">
+          <Name>Debug</Name>
+          <Description>Debug</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.McAfee.MonitorType.PSRegCheckRegValue.TimeStamp" SubElementID="Threshold">
+          <Name>Threshold</Name>
+          <Description>Threshold</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status">
+          <Name>WEB Page Check Status</Name>
+          <Description>GripLogix WebMon WEBPage MonitorType WEBPageCheck.Status</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="IntervalSeconds">
+          <Name>Interval Seconds</Name>
+          <Description>Interval Seconds</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="SyncTime">
+          <Name>Sync Time</Name>
+          <Description>Sync Time</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="Debug">
+          <Name>Debug</Name>
+          <Description>Debug</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="Url">
+          <Name>Url</Name>
+          <Description>Url</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="ContentChecked">
+          <Name>Content Checked</Name>
+          <Description>Content Checked</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="ComputerName">
+          <Name>Computer Name</Name>
+          <Description>Computer Name</Description>
+        </DisplayString>
+        <DisplayString ElementID="GripLogix.WebMon.WEBPage.MonitorType.WEBPageCheck.Status" SubElementID="TCPPort">
+          <Name>TCP Port</Name>
+          <Description>TCP Port</Description>
+        </DisplayString>
         <DisplayString ElementID="GripLogix.McAfee.Monitoring">
           <Name>GripLogix McAfee Monitoring</Name>
           <Description>GripLogix McAfee Monitoring</Description>
@@ -1846,7 +1416,6 @@ Result: {0}
           <Description>Alert Rule for Thread Prevention Patch Level.</Description>
         </DisplayString>
       </DisplayStrings>
-      <KnowledgeArticles></KnowledgeArticles>
     </LanguagePack>
   </LanguagePacks>
 </ManagementPack>
